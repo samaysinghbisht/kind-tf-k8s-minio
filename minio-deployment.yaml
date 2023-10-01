@@ -1,0 +1,86 @@
+# Deploys a new Namespace for the MinIO Pod
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio 
+  labels:
+    name: minio
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minio
+  namespace: minio
+  labels:
+    app: minio
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: minio
+      labels:
+        app: minio
+    spec:
+      volumes:
+        - name: data
+          emptyDir:
+            sizeLimit: 500Mi
+      containers:
+        - name: minio
+          image: quay.io/minio/minio:latest
+          imagePullPolicy: IfNotPresent
+          env:
+           - name: MINIO_ACCESS_KEY
+             value: "minio"
+           - name: MINIO_SECRET_KEY
+             value: "minio123"
+          livenessProbe:
+            httpGet:
+              path: /minio/health/live
+              port: 9000
+            initialDelaySeconds: 120
+            periodSeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /minio/health/ready
+              port: 9000
+            initialDelaySeconds: 120
+            periodSeconds: 20
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          command:
+            - /bin/bash
+            - -c
+          args:
+              - minio server /data --console-address :9090
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: minio
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  selector:
+    app: minio
+  ports:
+    - name: console
+      port: 9090
+      targetPort: 9090
+    - name: s3
+      port: 9000
+      targetPort: 9000
+  type: LoadBalancer
