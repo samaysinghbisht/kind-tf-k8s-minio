@@ -1,23 +1,24 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
-provider "registry.terraform.io/aminueza/minio" {
-  version     = "1.18.0"
-  constraints = "1.18.0"
+provider "registry.terraform.io/kreuzwerker/docker" {
+  version     = "2.12.0"
+  constraints = "2.12.0"
   hashes = [
-    "h1:yA20WjIB35qp2YeWRx0w/7x0DytEB6frqNzoN1x28aI=",
-    "zh:0a039d1915cc65e00f6af86a839e798b44a3bac4feffd4b585bf1966e18fac48",
-    "zh:188065d7750e3b0052d712d9100417688a4ab3862bdb2f07f8736eaf34510659",
-    "zh:3d712788dbc19216e4a13e0ca73542681e346b3208e0d8c1a8548dbf939f9e20",
-    "zh:4811a85511b57b02b2405614929f25851a91236ee6ae2b4f2a6718d4c775118b",
-    "zh:516891c2f6ffffbb25f48f595af1212963f95c962989f626e28215eed2e3a971",
-    "zh:6d26f8a83affd022ac6b0dcd70fbc46ddc7522caf9854f96bd08150b5cf8009e",
-    "zh:6e777f8d72e34a2ca4d9f1ab3da5efe43dab0dc4f9b1a5abcb366649eaf6f0b2",
-    "zh:6ea63b464067a0d498a367629346d1d178a068445973fa4f84489c6d14191ac8",
-    "zh:7f1b943a49d4b1e31ef0d47cea32fc0d132076a91cd22f8c6e8200833abc9786",
-    "zh:93e28feb82c3dff73a3359dbeeaa4d446960f773ecd3f0c32e5831a6c87ef754",
-    "zh:9ae59d07d28a61b52fbbb0a2bbdca991b22184c85667e61594059779c055f487",
-    "zh:d4f8689c02e25089a5a5a719ee4c389d37dee7e6bb21c2dd590dd111bcbcb998",
+    "h1:4gvDBwlt7GM1/xyhCKH9YGYwE5v5dqWnweqJ9sThsGo=",
+    "zh:0019557ccf5fa7631ad24c067b3199e8ded1d1b57e04bc4b3ae02d313126d32d",
+    "zh:3a7e7fd8c2dcbbedcc04b1c78bcf092f09b6d2d43ee867a7adad080205211072",
+    "zh:573be9e41c73f3ffb0f14945c4ca29829648e75e8800fe3922be8f8de2a291ce",
+    "zh:5fd1215557106cd6c1084c84f95c58a10400523f4100f80283949f565f102eb9",
+    "zh:64638e7e3b43821f173e299a6c9ceaa7d65a03ece20d281ba664375f808793d4",
+    "zh:70288e4d4e853a00d63697192cd5bce9d68939db8acaeec0c9a218ac37092c48",
+    "zh:7963572e4265dd433dc6ee78f12e770727a69a90e9e5f51cfdfd125aba8b42d2",
+    "zh:7c5e8d7e1d356328622556c12bd3b5d196381f72376968485d2155a55c164b36",
+    "zh:a70708a2fbeddaad5bc9105eccd816a8a6e69ba37ed99df56e8944e834fdd676",
+    "zh:cbc85567fd7a761dd7d800fd59c48b5977019eb4484e058632b373840821f347",
+    "zh:cdee8369df8f7a9b11e3ed1d8d63317884dc1d19c2188fff4cfb7f1ecd3422ed",
+    "zh:e68c465a79c667fc4527575ee0f95c3ba83a3a41cecda2ac56bb24c2f086e5e6",
+    "zh:f7314178f069afc068ff014bcb1e5890e20bba75082032b6d812e40977c87a6e",
   ]
 }
 
