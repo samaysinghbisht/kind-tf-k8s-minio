@@ -1,0 +1,62 @@
+# app-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jw-scaler
+  namespace: jw-scaler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jw-scaler
+  template:
+    metadata:
+      labels:
+        app: jw-scaler
+    spec:
+      initContainers:
+      - name: upload-images
+        image: samay1993/upload-images:latest
+        env:        
+           - name: MINIO_HOST
+             value: ""
+           - name: MINIO_ACCESS_KEY
+             value: "minio"
+           - name: MINIO_SECRET_KEY
+             value: "minio123"
+
+      containers:
+        - name: jw-scaler-container
+          image: jw-scaler:latest
+          env:
+           - name: MINIO_HOST
+             value: ""
+           - name: MINIO_ACCESS_KEY
+             value: "minio"
+           - name: MINIO_SECRET_KEY
+             value: "minio123"
+          ports:
+            - containerPort: 5000              
+          # Define Resource Requests and Limits
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jw-scaler-service
+  namespace: jw-scaler
+spec:
+  selector:
+    app: jw-scaler
+  ports:
+    - protocol: TCP
+      port: 5000  
+      targetPort: 5000  
+  type: NodePort
