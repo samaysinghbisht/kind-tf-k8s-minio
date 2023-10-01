@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minio Image Viewer</title>
+</head>
+<body>
+    <h1>Images from Minio Bucket</h1>
+    <div>
+        {% for url in image_urls %}
+            <img src="{{ url }}" alt="Minio Image" width="300" height="200">
+        {% endfor %}
+    </div>
+</body>
+</html>
